@@ -1,0 +1,21 @@
+{
+    "class": [
+        {"name": "Micro", "number": "9601"},
+        {"name": "Macro", "number": "9603"},
+        {"name": "Metrics", "number": "9605"},
+        {"name": "Math", "number": "9607"}
+    ],
+    "assignment": "1",
+    "due_date": "{% now 'utc' + 'days=5', '%B %d, %Y' %}",
+    "author_name": "Henry Stern",
+    "__prompts__": {
+        "class": "Class",
+        "assignment": "Assignment number",
+        "due_date": "Due date (yyyy-mm-dd)",
+        "author_name": "Author's name"
+    },
+    "_copy_without_render": [
+        "math.sty",
+        "minimal.sty"
+    ]
+}

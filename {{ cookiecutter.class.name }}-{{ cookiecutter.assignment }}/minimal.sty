@@ -1,0 +1,219 @@
+% Source: Pascal Michaillat - https://github.com/pmichaillat/latex-paper
+
+% Documentation: https://pascalmichaillat.org/d2/
+
+% --- Useful Packages ---
+
+\usepackage{mathtools}
+\usepackage{etoolbox}
+
+% --- Disable indentation ---
+\usepackage{parskip}
+
+% --- Fonts ---
+
+\usepackage{sourceserifpro}
+\usepackage{sourcesanspro}
+\usepackage{sourcecodepro}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,eucal,bbold,bm}
+\usepackage[italic,eulergreek,symbolmisc]{mathastext}
+\usepackage[hyphens]{url}
+\usepackage{microtype}
+
+% Correct spacing around letters in math
+\MTsetmathskips{f}{3mu}{0mu}
+\MTsetmathskips{g}{1mu}{0mu}
+\MTsetmathskips{y}{2mu}{0mu}
+\MTsetmathskips{p}{1mu}{0mu}
+\MTsetmathskips{l}{0mu}{1mu}
+\MTsetmathskips{Q}{0mu}{1mu}
+\MTsetmathskips{j}{1mu}{1mu}
+\MTsetmathskips{i}{0mu}{1mu}
+
+% Copiable text in PDF
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+% --- Spacing ---
+
+\usepackage[onehalfspacing]{setspace}
+\AtBeginDocument{\frenchspacing}
+
+% reduce space around display math
+\setdisplayskipstretch{1}
+
+% --- Color ---
+
+\usepackage[x11names]{xcolor}
+
+% --- Title page ---
+
+% Title font
+\usepackage{titling}
+\pretitle{\begin{center}\bfseries\Large}
+\posttitle{\par\end{center}\vskip 0.5em}
+\preauthor{\begin{center}\lineskip 0.5em \begin{tabular}[t]{c}}
+\postauthor{\end{tabular}\par\end{center}}
+\predate{\begin{center}}
+\postdate{\par\end{center}}
+
+% No thanks mark
+\renewcommand{\tamark}{}
+\setlength{\thanksmarkwidth}{0em}
+\setlength{\thanksmargin}{0em}
+
+% No indentation for abstract
+\usepackage{etoolbox}
+\AtBeginEnvironment{titlepage}{\pagestyle{empty}\setlength{\parindent}{0pt}}
+
+% --- Headings ---
+
+\usepackage[explicit]{titlesec}
+\titleformat{\section}{\bfseries}{\thesection.}{1em}{\lowercase{#1}}[\vspace{.1em}\titlerule]
+\titleformat{\subsection}{\bfseries}{\thesubsection.}{1em}{\lowercase{#1}}
+\titleformat{\subsubsection}{\itshape}{\thesubsubsection.}{1em}{#1}
+% \titleformat{\section}{\scshape}{\thesection.}{1em}{\lowercase{#1}}[\vspace{.1em}\titlerule]
+% \titleformat{\subsection}{\itshape}{\thesubsection.}{1em}{#1}
+\titleformat{\paragraph}[runin]{\itshape}{}{}{#1}[.]
+\titlelabel{\thetitle.\quad}
+
+% --- Theorems & proofs ---
+
+\newtheoremstyle{paper}{}{}{\itshape}{}{\bfseries}{.}{.5em}{}
+\patchcmd{\thmhead}{(#3)}{\bfseries\lowercase{--- #3}}{}{} % em dash for optional argument
+\theoremstyle{paper}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{remark}{Remark}
+\newtheorem{problem}{Problem}
+\newtheorem*{problem*}{Problem}
+\newtheorem{example}{Example}
+\newtheorem{exercise}{Exercise}
+
+% Proof label font
+\renewcommand{\proofname}{\upshape\itshape Proof}
+
+% Solution proof environment
+\newenvironment{solution}
+  {\begin{proof}[\upshape\itshape Solution]}
+  {\end{proof}}
+
+% --- Tables & figures ---
+
+\usepackage{multirow,booktabs,rotating,graphicx}
+\renewcommand{\floatpagefraction}{0}
+\renewcommand{\arraystretch}{1.1}
+\renewcommand{\figurename}{\textit{Figure}}
+\renewcommand{\tablename}{\textit{Table}}
+\BeforeBeginEnvironment{tabular*}{\footnotesize}
+\AtBeginDocument{\allowdisplaybreaks[1]}
+
+% Captions
+\usepackage{caption,subcaption}
+\captionsetup{labelsep=period}
+\captionsetup[sub]{labelformat=simple,labelsep=period,size=footnotesize}
+\captionsetup[table]{position=top}
+\renewcommand{\thesubfigure}{\Alph{subfigure}}
+
+% Centered figures & tables
+\makeatletter\g@addto@macro\@floatboxreset\centering\makeatother 
+
+% Notes below tables & figures
+\newcommand{\note}[2][]{\parbox{\textwidth}{\footnotesize\vspace*{10pt}\textit{#1}#2}}
+
+% Spacing in figures
+\newcommand{\fspace}{\\\vspace*{4mm}}
+
+% --- Lists ---
+
+\usepackage{enumitem}
+\setlist{nosep}
+\setlist[itemize,1]{
+  labelindent=\parindent,
+  leftmargin=*,
+  label=\upshape\textbullet
+}
+\setlist[itemize,2]{
+  leftmargin=*,
+  label=\upshape\textopenbullet
+}
+\setlist[enumerate,1]{
+  leftmargin=*,
+  label=\upshape\alph*)
+}
+\setlist[enumerate,2]{
+  leftmargin=*,
+  label=\upshape\arabic*.
+}
+
+% --- Bibliography ---
+
+\usepackage{natbib}
+\setcitestyle{aysep={}}
+\renewcommand{\bibfont}{\small}
+\setlength{\bibsep}{0pt}
+\setlength{\bibhang}{1.5em}
+
+% Reduced spacing in bibliography
+\AtBeginEnvironment{thebibliography}{\setstretch{1.1}}
+
+% --- Appendix ---
+
+\AfterEndEnvironment{thebibliography}{
+\setcounter{theorem}{0}
+\setcounter{proposition}{0} 
+\setcounter{lemma}{0}
+\setcounter{corollary}{0}
+\setcounter{definition}{0}
+\setcounter{assumption}{0}
+\setcounter{remark}{0}
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\setcounter{equation}{0} 
+\renewcommand{\thetheorem}{A\arabic{theorem}}
+\renewcommand{\theproposition}{A\arabic{proposition}}
+\renewcommand{\thelemma}{A\arabic{lemma}}
+\renewcommand{\thecorollary}{A\arabic{corollary}}
+\renewcommand{\thedefinition}{A\arabic{definition}}
+\renewcommand{\theassumption}{A\arabic{assumption}}
+\renewcommand{\theremark}{A\arabic{remark}}
+\renewcommand{\thetable}{A\arabic{table}}
+\renewcommand{\thefigure}{A\arabic{figure}}
+\renewcommand{\theequation}{A\arabic{equation}}
+\titleformat{\section}{\centering\large\bfseries}{Appendix~\thesection.}{1em}{}}
+
+% --- Hyperlinks (last package) ---
+
+\usepackage{fancyhdr} % Before hyperref
+\usepackage[pdftex,hidelinks,hypertexnames=false,pdfpagemode=UseNone,pdfdisplaydoctitle=true]{hyperref}
+\definecolor{clay}{RGB}{165, 74, 74}
+\NewCommandCopy{\oldhref}{\href}
+\renewcommand{\href}[2]{\oldhref{#1}{#2\color{clay}°}}
+
+% --- Layout (after hyperref) ---
+
+\usepackage[margin=1.5in,footskip=0.7in]{geometry}
+
+% --- Headers & footers (after hyperref & geometry) ---
+
+% No header line
+\renewcommand{\headrule}{}
+
+% Centered page numbers on regular pages
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{--- \thepage\  ---}
+
+% Footers for title pages
+\fancypagestyle{plain}{\fancyhf{}}
+\usepackage{xparse}
+\NewDocumentCommand{\available}{o g}{%
+\fancypagestyle{plain}{\fancyfoot[C]{\color{black!75}\footnotesize%
+\IfValueT{#1}{Published in \emph{#1}\;\textbullet\;}%
+Available at \url{#2}}}}
