@@ -11,7 +11,7 @@
     "__prompts__": {
         "class": "Class",
         "assignment": "Assignment number",
-        "due_date": "Due date (yyyy-mm-dd)",
+        "due_date": "Due date",
         "author_name": "Author's name"
     },
     "_copy_without_render": [
