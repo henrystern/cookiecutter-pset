@@ -152,7 +152,7 @@ Available at \url{#2}}}}
 
 % Define theorem style
 \newtheoremstyle{paper}{}{}{\itshape}{}{\bfseries}{.}{0.5em}{}
-\patchcmd{\thmhead}{(#3)}{\bfseries\lowercase{--- #3}}{}{} % em dash for optional argument
+\patchcmd{\thmhead}{(#3)}{\bfseries{-- #3}}{}{} % en dash for optional argument
 
 % Apply theorem style
 \theoremstyle{paper}
