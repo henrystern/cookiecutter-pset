@@ -1,25 +1,18 @@
-#import "@preview/ctheorems:1.1.3": *
-#show: thmrules
+#let c = counter("problem")
+#let problem(it) = block[
+  #c.step()
+  *Problem #context c.display().*
+  #it
+]
 
-#let problem = thmenv(
-  "problem",
-  "problem",
-  0,
-  (name, number, body, color: black) => [
-    #text(color)[*Problem #number#if name != none [ -- #name]*.]
-    #h(0.2em)
+#let solution(body) = {
+  block(width: 100%)[
+    _Solution._
     #body
-    #v(0.2em)
+    #h(1fr)
+    $square.stroked.medium$
   ]
-)
-#let solution = thmproof(
-  "solution", 
-  "Solution",
-  bodyfmt: body => [
-      #body #h(1fr) $square.stroked.medium$
-  ],
-  inset: (top: 0em, left: 0em, right: 0em),
-)
+}
 
 #let psst(
   class: "ECON9604 – Macro",
@@ -32,25 +25,24 @@
     "us-letter",
     margin: (x: 1.3in, y: 1in),
     footer: context {
-      let abspage = locate(here()).page();
-      if abspage < 2 {
-      } else {
+      let abspage = locate(here()).page()
+      if abspage < 2 {} else {
         align(center)[— #counter(page).display() —]
       }
-    }
+    },
   )
 
   // Default fonts are more reliable for spacing and weight matching.
   set text(
     // font: "Source Serif 4",
-    size: 11pt
+    size: 11pt,
   )
 
   // show math.equation: set text(font: "STIX Math")
 
   set par(
     justify: true,
-    leading: .75em
+    leading: .75em,
   )
 
   set heading(numbering: "1.")
@@ -59,7 +51,7 @@
   show heading.where(level: 2): set text(
     size: .9em,
     weight: "semibold",
-    style: "italic"
+    style: "italic",
   )
 
   set list(spacing: 1.2em)
@@ -73,12 +65,12 @@
 
   align(center)[
     #v(5em)
-    #text(size:1.3em, weight: "bold")[
+    #text(size: 1.3em, weight: "bold")[
       #class \
       #assignment
     ]
 
-    #text(size:1.2em)[
+    #text(size: 1.2em)[
       #author
 
       #date.display("[month repr:long] [day], [year]")
