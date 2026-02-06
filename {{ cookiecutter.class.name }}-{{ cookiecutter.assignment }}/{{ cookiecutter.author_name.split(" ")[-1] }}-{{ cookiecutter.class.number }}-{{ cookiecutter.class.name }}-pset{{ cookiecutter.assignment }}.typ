@@ -1,6 +1,6 @@
-#import "pset.typ": problem, psst, solution
+#import "pset.typ": problem, pset, solution
 
-#show: psst.with(
+#show: pset.with(
   class: "ECON{{ cookiecutter.class.number }} – {{ cookiecutter.class.name }}",
   assignment: "Problem Set {{ cookiecutter.assignment }}",
   author: "{{cookiecutter.author_name}}",

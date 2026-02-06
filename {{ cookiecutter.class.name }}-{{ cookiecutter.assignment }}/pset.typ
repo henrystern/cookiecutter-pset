@@ -1,7 +1,6 @@
-#let c = counter("problem")
 #let problem(it) = block[
-  #c.step()
-  *Problem #context c.display().*
+  #counter("problem").step()
+  *Problem #context counter("problem").display().*
   #it
 ]
 
@@ -14,7 +13,7 @@
   ]
 }
 
-#let psst(
+#let pset(
   class: "ECON9604 – Macro",
   assignment: "Problem set 1",
   author: "Henry Stern",
@@ -73,7 +72,7 @@
     #text(size: 1.2em)[
       #author
 
-      #date.display("[month repr:long] [day], [year]")
+      #date.display("[month repr:long] [day padding:none], [year]")
     ]
   ]
 
