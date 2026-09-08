@@ -1,9 +1,17 @@
 {
     "class": [
-        {"name": "Micro", "number": "9602"},
-        {"name": "Macro", "number": "9604"},
-        {"name": "Metrics", "number": "9606"},
-        {"name": "Research Seminar", "number": "9691"}
+        {
+            "name": "Micro",
+            "number": "2200"
+        },
+        {
+            "name": "Macro",
+            "number": "2100"
+        },
+        {
+            "name": "Metrics",
+            "number": "2400"
+        }
     ],
     "assignment": "1",
     "due_date": "{% now 'utc' + 'days=5', '%B %d, %Y' %}",
